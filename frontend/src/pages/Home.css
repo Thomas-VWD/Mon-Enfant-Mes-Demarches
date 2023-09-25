@@ -1,0 +1,30 @@
+.home-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10dvh;
+}
+.home-title {
+  margin-left: 10dvw;
+  margin-top: 5dvh;
+  line-height: 2;
+}
+.app-name {
+  font-size: 2em;
+}
+.connexion-box {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--third-color);
+  border-radius: 20px;
+}
+.signup {
+  color: var(--color2);
+}
+.signup,
+.connexion-box {
+  width: 80dvw;
+  margin-left: 10dvw;
+  height: 5dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
