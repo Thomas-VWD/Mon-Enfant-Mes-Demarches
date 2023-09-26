@@ -1,0 +1,16 @@
+.head {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  width: 90dvw;
+  height: 10dvh;
+  font-size: small;
+  margin-left: 5dvw;
+  margin-top: 2dvh;
+  border-radius: 20px;
+  border: solid 2px var(--third-color);
+}
+.head > h1 {
+  color: var(--color1);
+}

@@ -1,0 +1,28 @@
+.login-box {
+}
+.field-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--color2);
+  margin-top: 75px;
+}
+.login-form {
+}
+input {
+  border: solid 1px var(--color2);
+  border-radius: 10px;
+  height: 40px;
+}
+input::placeholder {
+  color: var(--color2);
+  font-family: var(--primary-font);
+  text-align: center;
+}
+input,
+.forgot,
+.signup {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

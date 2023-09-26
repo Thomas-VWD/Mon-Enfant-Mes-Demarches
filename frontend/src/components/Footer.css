@@ -1,0 +1,22 @@
+.foot {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--secondary-color);
+  width: 97dvw;
+  margin-left: 1dvw;
+  margin-right: 1dvw;
+  height: 7dvh;
+  font-size: small;
+  border-radius: 20px;
+  border: solid 2px var(--third-color);
+  position: fixed;
+  bottom: 0;
+}
+footer > p {
+  color: var(--color1);
+}
+.github-icon {
+  height: 32px;
+  width: 32px;
+}
