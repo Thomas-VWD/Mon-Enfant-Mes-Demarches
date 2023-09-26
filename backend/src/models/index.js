@@ -28,11 +28,15 @@ pool.getConnection().catch(() => {
 // declare and fill models: that's where you should register your own managers
 
 const models = {};
+const UserManager = require("./UserManager");
 
 const ItemManager = require("./ItemManager");
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
+
+models.user = new UserManager();
+models.user.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model

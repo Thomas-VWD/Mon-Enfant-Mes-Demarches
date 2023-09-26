@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify"; // Import de ToastContainer et toast
+import "react-toastify/dist/ReactToastify.css"; // Import des styles de toast
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -10,10 +12,49 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Ajout de la logique d'inscription à faire
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const User = {
+      childName,
+      hashedPassword: password,
+      email,
+    };
+    if (password !== confirmPassword) {
+      toast.error(
+        "Le mot de passe et la confirmation du mot de passe ne correspondent pas."
+      );
+      return;
+    }
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:3310"}/User`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(User),
+        }
+      );
+      if (res.ok) {
+        setChildName("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        navigate("/Login");
+        toast.success("Compte créé avec succès !");
+      } else if (res.status === 403) {
+        toast.error("Le compte existe déjà.");
+      } else {
+        toast.error("La création du compte a échoué.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Une erreur s'est produite lors de la création du compte.");
+    }
   };
 
   return (
@@ -73,6 +114,7 @@ function Signup() {
         </form>
       </div>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
