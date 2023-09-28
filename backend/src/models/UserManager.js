@@ -18,13 +18,5 @@ class UserManager extends AbstractManager {
       [user.Child_name, user.mail, user.password, user.id]
     );
   }
-  /*
-  findByUsernameWithHashedPassword(user) {
-    return this.database.query(
-      `SELECT childName, hashedPassword from  ${this.table} where childName = ?`,
-      [user.childName, user.hashedPassword]
-    );
-  }
-  */
 }
 module.exports = UserManager;
