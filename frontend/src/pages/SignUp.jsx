@@ -30,7 +30,7 @@ function Signup() {
     }
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"}/User`,
+        `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:3310"}/user`,
         {
           method: "POST",
           headers: {

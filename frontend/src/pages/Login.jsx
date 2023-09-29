@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -9,9 +10,15 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
-    // Ajout de la logique de connexion à faire
+
+    const User = {
+      email,
+      password,
+    };
+    if (password!)
+  
   };
 
   return (
@@ -50,6 +57,7 @@ function Login() {
         </form>
       </div>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
