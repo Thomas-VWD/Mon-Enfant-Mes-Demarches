@@ -35,7 +35,8 @@ function Signup() {
         if (json.errors) {
           setUser(json);
         } else {
-          navigate("/login");
+          navigate("/Login");
+          console.warn(navigate);
         }
       });
   };
@@ -97,6 +98,7 @@ function Signup() {
           <button className="signup-submit" type="submit">
             Sign Up
           </button>
+
           <div className="signin">
             <NavLink to="/Login">Déjà un compte ? Se connecter</NavLink>
           </div>

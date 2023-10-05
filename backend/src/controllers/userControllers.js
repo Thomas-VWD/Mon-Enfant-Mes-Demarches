@@ -56,7 +56,8 @@ const add = (req, res) => {
   models.user
     .insert(user)
     .then(([result]) => {
-      res.location(`/user/${result.insertId}`).sendStatus(201);
+      if (result.affectedRows) res.json(result.insertId).status(201);
+      console.warn(result);
     })
     .catch((err) => {
       console.error(err);
