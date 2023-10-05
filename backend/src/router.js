@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const userControllers = require("./controllers/userControllers");
+// const { hashPassword } = require("./middleware/Auth");
 
 router.get("/user", userControllers.browse);
 router.get("/user/:id", userControllers.read);

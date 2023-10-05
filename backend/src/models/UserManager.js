@@ -7,15 +7,15 @@ class UserManager extends AbstractManager {
 
   insert(user) {
     return this.database.query(
-      `INSERT INTO ${this.table} (Child_name, mail, password) VALUES (?,?,?)`,
-      [user.Child_name, user.mail, user.password]
+      `INSERT INTO ${this.table} (Child_name, email, password) VALUES (?,?,?)`,
+      [user.Child_name, user.email, user.password]
     );
   }
 
   update(user) {
     return this.database.query(
-      `UPDATE ${this.table} SET Child_name=?, mail=?, password =? WHERE id=?`,
-      [user.Child_name, user.mail, user.password, user.id]
+      `UPDATE ${this.table} SET Child_name=?, email=?, password =? WHERE id=?`,
+      [user.Child_name, user.email, user.password, user.id]
     );
   }
 }

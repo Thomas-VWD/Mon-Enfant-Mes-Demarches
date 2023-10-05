@@ -1,24 +1,32 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import "./Login.css";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [mail, setMail] = useState("");
+  // const [hashPassword, setHashPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    mail: "marcel",
+    hashPassword: "roger",
+  });
 
-  const handleSubmit =  (e) => {
+  const onChange = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.type]: e.target.value,
+    });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault(console.warn(credentials));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const User = {
-      email,
-      password,
-    };
-    if (password!)
-  
   };
 
   return (
@@ -28,23 +36,25 @@ function Login() {
         <div className="login-title">
           <h2 className="login">LOGIN PAGE</h2>
         </div>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form onSubmit={(onSubmit, handleSubmit)} className="login-form">
           <div className="email-box">
             <input
+              name="mail"
               type="email"
               id="email" // Ajout de l'attribut id correspondant à faire
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={credentials.mail}
+              onChange={onChange}
               required
               placeholder="MAIL"
             />
           </div>
           <div className="password-box">
             <input
+              name="hashPassword"
               type="password"
               id="password" // Ajout de l'attribut id correspondant à faire
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={credentials.hashPassword}
+              onChange={onChange}
               required
               placeholder="Mot de Passe"
             />
@@ -57,7 +67,7 @@ function Login() {
         </form>
       </div>
       <Footer />
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </div>
   );
 }
