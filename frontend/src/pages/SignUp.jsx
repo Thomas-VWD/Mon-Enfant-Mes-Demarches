@@ -1,7 +1,5 @@
 import React, { useState, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from "react-toastify"; // Import de ToastContainer et toast
-import "react-toastify/dist/ReactToastify.css"; // Import des styles de toast
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -36,7 +34,6 @@ function Signup() {
           setUser(json);
         } else {
           navigate("/Login");
-          console.warn(navigate);
         }
       });
   };

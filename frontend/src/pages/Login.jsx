@@ -1,32 +1,40 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-// import { ToastContainer, toast } from "react-toastify";
+import { useState, useRef } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import "./Login.css";
 
 function Login() {
-  // const [mail, setMail] = useState("");
-  // const [hashPassword, setHashPassword] = useState("");
-  const [credentials, setCredentials] = useState({
-    mail: "marcel",
-    hashPassword: "roger",
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    Child_name: "",
+    password: "",
   });
-
-  const onChange = (e) => {
-    setCredentials({
-      ...credentials,
-      [e.target.type]: e.target.value,
-    });
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault(console.warn(credentials));
-  };
+  const form = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(form.current));
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:3310"}/login`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.errors) {
+          setUser(json);
+        } else {
+          navigate("/MyAccount");
+        }
+      });
   };
 
   return (
@@ -36,28 +44,30 @@ function Login() {
         <div className="login-title">
           <h2 className="login">LOGIN PAGE</h2>
         </div>
-        <form onSubmit={(onSubmit, handleSubmit)} className="login-form">
-          <div className="email-box">
+        <form ref={form} onSubmit={handleSubmit} className="login-form">
+          <div className="child-name-box">
             <input
-              name="mail"
-              type="email"
-              id="email" // Ajout de l'attribut id correspondant à faire
-              value={credentials.mail}
-              onChange={onChange}
+              type="text"
+              name="Child_name"
+              defaultValue={user.Child_name}
               required
-              placeholder="MAIL"
+              placeholder="Prénom de l'enfant"
             />
+            {user.errors?.Child_name && (
+              <small>{user.errors.Child_name.message}</small>
+            )}
           </div>
           <div className="password-box">
             <input
-              name="hashPassword"
               type="password"
-              id="password" // Ajout de l'attribut id correspondant à faire
-              value={credentials.hashPassword}
-              onChange={onChange}
+              name="password"
+              defaultValue={user.password}
               required
               placeholder="Mot de Passe"
             />
+            {user.errors?.password && (
+              <small>{user.errors.password.message}</small>
+            )}
           </div>
           <div className="forgot">Mot de passe oublié ?</div>
           <button type="submit">Se connecter</button>
@@ -67,7 +77,6 @@ function Login() {
         </form>
       </div>
       <Footer />
-      {/* <ToastContainer /> */}
     </div>
   );
 }
