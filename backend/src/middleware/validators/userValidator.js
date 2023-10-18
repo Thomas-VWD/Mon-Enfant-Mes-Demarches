@@ -1,7 +1,7 @@
 const { body, validationResult } = require("express-validator");
 
 const validateUser = [
-  body("Child_name").notEmpty().withMessage("Child_name is required"),
+  body("childName").notEmpty().withMessage("childName is required"),
   body("email").isEmail().withMessage("Invalid email"),
   body("password")
     .isLength({ min: 6 })

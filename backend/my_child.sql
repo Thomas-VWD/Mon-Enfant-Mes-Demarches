@@ -106,7 +106,7 @@ DROP TABLE IF EXISTS `User`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `User` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `Child_name` varchar(80) NOT NULL UNIQUE,
+  `childName` varchar(80) NOT NULL UNIQUE,
   `email` varchar(255) NOT NULL UNIQUE,
   `hashedPassword` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
@@ -119,7 +119,6 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (1,'Matteo','toto@to.fr','toto01'),(2,'Lucas','luc@to.fr','toto02');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

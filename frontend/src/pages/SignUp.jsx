@@ -8,7 +8,7 @@ import "./Signup.css";
 function Signup() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    Child_name: "",
+    childName: "",
     email: "",
     password: "",
   });
@@ -49,13 +49,13 @@ function Signup() {
           <div className="child-name-box">
             <input
               type="text"
-              name="Child_name"
-              defaultValue={user.Child_name}
+              name="childName"
+              defaultValue={user.childName}
               required
               placeholder="Prénom de l'enfant"
             />
-            {user.errors?.Child_name && (
-              <small>{user.errors.Child_name.message}</small>
+            {user.errors?.childName && (
+              <small>{user.errors.childName.message}</small>
             )}
           </div>
           <div className="email-box">

@@ -13,6 +13,6 @@ router.put("/user/:id", validateUser, hashPassword, userControllers.edit);
 router.post("/user", validateUser, hashPassword, userControllers.add);
 router.delete("/user/:id", userControllers.destroy);
 
-router.post("/login", authControllers.login, verifyPassword);
+router.post("/login", authControllers.getChildNameAndPassword, verifyPassword);
 
 module.exports = router;

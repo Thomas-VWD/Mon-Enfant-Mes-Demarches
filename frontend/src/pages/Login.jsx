@@ -7,10 +7,7 @@ import "./Login.css";
 
 function Login() {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
-    Child_name: "",
-    password: "",
-  });
+  const [errors, setErrors] = useState("");
   const form = useRef(null);
   const { setToken } = useAuth();
 
@@ -30,8 +27,8 @@ function Login() {
     )
       .then((res) => res.json())
       .then((json) => {
-        if (json.errors) {
-          setUser(json);
+        if (json.message) {
+          setErrors(json);
         } else {
           setToken(json.token);
           navigate("/MyAccount");
@@ -47,29 +44,22 @@ function Login() {
           <h2 className="login">LOGIN PAGE</h2>
         </div>
         <form ref={form} onSubmit={handleSubmit} className="login-form">
+          {errors.message && <p>{errors.message}</p>}
           <div className="child-name-box">
             <input
               type="text"
-              name="Child_name"
-              defaultValue={user.Child_name}
+              name="childName"
               required
               placeholder="Prénom de l'enfant"
             />
-            {user.errors?.Child_name && (
-              <small>{user.errors.Child_name.message}</small>
-            )}
           </div>
           <div className="password-box">
             <input
               type="password"
               name="password"
-              defaultValue={user.password}
               required
               placeholder="Mot de Passe"
             />
-            {user.errors?.password && (
-              <small>{user.errors.password.message}</small>
-            )}
           </div>
           <div className="forgot">Mot de passe oublié ?</div>
           <button type="submit">Se connecter</button>

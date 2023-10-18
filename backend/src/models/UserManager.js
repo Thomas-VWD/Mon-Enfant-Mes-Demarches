@@ -5,23 +5,24 @@ class UserManager extends AbstractManager {
     super({ table: "User" });
   }
 
-  findByChildName(Child_name) {
+  findByChildName(user) {
     return this.database.query(
-      `SELECT Child_name, hashedPassword from ${this.table} where Child_name = ?`
+      `SELECT childName, hashedPassword from ${this.table} where childName = ?`,
+      [user.childName]
     );
   }
 
   insert(user) {
     return this.database.query(
-      `INSERT INTO ${this.table} (Child_name, email, password) VALUES (?,?,?)`,
-      [user.Child_name, user.email, user.password]
+      `INSERT INTO ${this.table} (childName, email, hashedPassword) VALUES (?,?,?)`,
+      [user.childName, user.email, user.hashedPassword]
     );
   }
 
   update(user) {
     return this.database.query(
-      `UPDATE ${this.table} SET Child_name=?, email=?, password =? WHERE id=?`,
-      [user.Child_name, user.email, user.password, user.id]
+      `UPDATE ${this.table} SET childName=?, email=?, hashedPassword =? WHERE id=?`,
+      [user.childName, user.email, user.hashedPassword, user.id]
     );
   }
 }
