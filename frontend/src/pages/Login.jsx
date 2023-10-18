@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
 import "./Login.css";
 
 function Login() {
@@ -12,6 +12,7 @@ function Login() {
     password: "",
   });
   const form = useRef(null);
+  const { setToken } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ function Login() {
         if (json.errors) {
           setUser(json);
         } else {
+          setToken(json.token);
           navigate("/MyAccount");
         }
       });
