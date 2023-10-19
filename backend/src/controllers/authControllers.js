@@ -9,7 +9,7 @@ const getChildNameAndPassword = (req, res, next) => {
       console.warn("Utilisateur introuvable");
       res.status(401).json({ message: "Invalid credentials. Try again." });
     } else {
-      req.user = childNameInDatabase; // Utilisez req.user au lieu de req.childName
+      req.user = childNameInDatabase;
       console.warn("Utilisateur trouvé:", req.user);
       next();
     }

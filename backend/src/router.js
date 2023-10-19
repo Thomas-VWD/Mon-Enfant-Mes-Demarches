@@ -5,7 +5,11 @@ const router = express.Router();
 const userControllers = require("./controllers/userControllers");
 const validateUser = require("./middleware/validators/userValidator");
 const authControllers = require("./controllers/authControllers");
-const { hashPassword, verifyPassword } = require("./middleware/services/auth");
+const {
+  hashPassword,
+  verifyPassword,
+  // verifyToken,
+} = require("./middleware/services/auth");
 
 router.get("/user", userControllers.browse);
 router.get("/user/:id", userControllers.read);
