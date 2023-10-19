@@ -5,10 +5,10 @@ class UserManager extends AbstractManager {
     super({ table: "User" });
   }
 
-  findByChildName(user) {
+  findByChildName(childName) {
     return this.database.query(
       `SELECT childName, hashedPassword from ${this.table} where childName = ?`,
-      [user.childName]
+      [childName]
     );
   }
 

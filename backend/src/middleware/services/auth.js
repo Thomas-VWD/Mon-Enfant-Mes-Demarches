@@ -22,19 +22,17 @@ const hashPassword = (req, res, next) => {
     });
 };
 
-const verifyPassword = async (req, res) => {
-  try {
-    const ok = await argon2.verify(req.user.hashedPassword, req.body.password);
-    if (ok) {
-      console.warn("Mot de passe correct");
-      res.json({ token: "oui, c'est bon" });
-    } else {
-      console.warn("Mot de passe incorrect");
-      res.status(401).json({ message: "Invalid credentials. Try again." });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error" });
+const verifyPassword = (req, res) => {
+  if (req.user) {
+    argon2.verify(req.user.hashedPassword, req.body.password).then((ok) => {
+      if (ok) {
+        res.json({ token: "oui, c'est bon" });
+      } else {
+        res.status(401).json({ message: "Invalid credentials. Try again." });
+      }
+    });
+  } else {
+    res.status(401).json({ message: "Invalid credentials. Try again." });
   }
 };
 

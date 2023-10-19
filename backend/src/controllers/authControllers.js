@@ -2,13 +2,14 @@ const models = require("../models");
 
 const getChildNameAndPassword = (req, res, next) => {
   models.user.findByChildName(req.body.childName).then(([rows]) => {
-    const userInDatabase = rows[0];
+    console.warn(req.body.childName);
+    const childNameInDatabase = rows[0];
 
-    if (userInDatabase == null) {
+    if (childNameInDatabase == null) {
       console.warn("Utilisateur introuvable");
       res.status(401).json({ message: "Invalid credentials. Try again." });
     } else {
-      req.user = userInDatabase;
+      req.user = childNameInDatabase; // Utilisez req.user au lieu de req.childName
       console.warn("Utilisateur trouvé:", req.user);
       next();
     }
