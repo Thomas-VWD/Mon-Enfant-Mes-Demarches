@@ -4,7 +4,9 @@
   gap: 10dvh;
 }
 .home-title {
+  text-align: center;
   margin-left: 10dvw;
+  margin-right: 10dvw;
   margin-top: 5dvh;
   line-height: 2;
 }
@@ -23,6 +25,7 @@
 .connexion-box {
   width: 80dvw;
   margin-left: 10dvw;
+  margin-right: 10dvw;
   height: 5dvh;
   display: flex;
   justify-content: center;

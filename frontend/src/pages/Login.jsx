@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./Login.css";
+import arrowLeft from "../assets/arrow-left.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -39,6 +40,11 @@ function Login() {
   return (
     <div className="login-box">
       <Header />
+      <div className="navigationLink">
+        <NavLink to="/">
+          <img src={arrowLeft} alt="arrow left" />
+        </NavLink>
+      </div>
       <div className="field-box">
         <div className="login-title">
           <h2 className="login">LOGIN PAGE</h2>

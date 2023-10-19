@@ -11,7 +11,7 @@ function MyAccount() {
       <Header />
       <div>
         <button type="button" onClick={() => setToken(null)}>
-          <NavLink to="/Login">Deconnection</NavLink>
+          <NavLink to="/Login">Deconnexion</NavLink>
         </button>
       </div>
       {token && (

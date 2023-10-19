@@ -1,5 +1,12 @@
 .login-box {
 }
+.navigationLink {
+  margin-top: 2dvh;
+  margin-left: 2dvw;
+}
+.navigationLink > a {
+  color: var(--color2);
+}
 .field-box {
   display: flex;
   flex-direction: column;
