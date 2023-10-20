@@ -37,3 +37,12 @@
 .signup > a {
   color: var(--color2);
 }
+@media screen and (min-width: 900px) {
+  .home-box {
+    align-items: center;
+  }
+  .signup,
+  .connexion-box {
+    width: 30dvw;
+  }
+}

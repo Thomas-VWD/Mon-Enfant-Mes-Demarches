@@ -20,3 +20,11 @@ footer > p {
   height: 32px;
   width: 32px;
 }
+@media screen and (min-width: 900px) {
+  .foot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 10dvh;
+  }
+}
