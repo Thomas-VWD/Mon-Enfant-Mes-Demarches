@@ -20,10 +20,7 @@ function MyAccount() {
             <NavLink to="/Documents">Stockage documents</NavLink>
           </div>
           <div className="connexion-box">
-            <NavLink to="/Demarches">Gérer mes démarches</NavLink>
-          </div>
-          <div className="connexion-box">
-            <NavLink to="/Rdv">Mes RDV</NavLink>
+            <NavLink to="/MyProcedures">Gérer mes démarches</NavLink>
           </div>
         </>
       )}
